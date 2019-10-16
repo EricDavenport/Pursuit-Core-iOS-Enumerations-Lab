@@ -45,34 +45,37 @@ enum Step {
     case down
     case left
     case right
-    
-    
-  
 }
+
+//let trialStep = Step.up
 
 // Your function here
 
-func getPosition(startingAt: (Int, Int), afterSteps: [Int]) -> (Int, Int) {
-      let finalSpot = (0, 0)
-//
-//      switch Step {
-//      case .up:
-//        startingAt.1 + 1
-//      case .down:
-//        startingAt.1 - 1
-//      case .left:
-//        startingAt.0 - 1
-//      case .right:
-//        startingAt.0 + 1
-//      }
-    if afterSteps = 
-      return finalSpot
+func getPosition(startingAt:(Int, Int), afterSteps: [Step]) -> (Int, Int) {
+
+    var finalSteps = (startingAt.0,startingAt.1)
+    
+    for thing in afterSteps {
+    switch thing {
+    case Step.up:
+        finalSteps.1 += 1
+    case Step.down:
+        finalSteps.1 -= 1
+    case .left:
+        finalSteps.0 -= 1
+    case .right:
+        finalSteps.0 += 1
+
+    }
+        
+//    if afterSteps =
   }
+    return finalSteps
 
-
+}
 // Uncomment the lines below to test your solution
 
-let startingLocation = (x: 0, y: 0)
+var startingLocation = (x: 0, y: 0)
 let steps: [Step] = [.up, .up, .left, .down, .left]
 let expectedEndPosition = (x: -2, y: 1)
 let endPosition = getPosition(startingAt: startingLocation, afterSteps: steps)
