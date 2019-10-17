@@ -95,20 +95,44 @@ enum Coin: Int {
 
 // Your function here
 
+func getTotalValue(from tuples: [(numberOfCoins: Int, typeOfCoin: Coin)]) -> Int {
+    var totalValue = 0
+//    var oneCents = Coin.penny
+//    var fiveCents = Coin.nickle
+//    var tenCents = Coin.dime
+//    var twentyFiveCents = Coin.quarter
+    for tuple in tuples {
+    switch tuple.typeOfCoin {
+    case .penny:
+        totalValue += Coin.penny.rawValue * tuple.numberOfCoins
+    case .nickle:
+        totalValue += Coin.nickle.rawValue * tuple.numberOfCoins
+    case .dime:
+        totalValue += Coin.dime.rawValue * tuple.numberOfCoins
+        break
+    case .quarter:
+        totalValue += Coin.quarter.rawValue * tuple.numberOfCoins
+        break
+        }
+    }
+    return totalValue
+}
+
+
 // Uncomment the lines below to test your solution
 
-//let coinArr: [(Int, Coin)] = [
-//    (10, .penny),
-//    (15, .nickle),
-//    (3, .quarter),
-//    (20, .penny),
-//    (3, .dime),
-//    (7, .quarter)
-//]
-//
-//let expectedTotal = 385
-//let total = getTotalValue(from: coinArr)
-//assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
+let coinArr: [(Int, Coin)] = [
+    (10, .penny),
+    (15, .nickle),
+    (3, .quarter),
+    (20, .penny),
+    (3, .dime),
+    (7, .quarter)
+]
+
+let expectedTotal = 385
+let total = getTotalValue(from: coinArr)
+assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
 
 // Question Four
 
@@ -136,6 +160,17 @@ enum Coin: Int {
 //Rock beats scissors, paper beats rock, scissor beats paper
 
 // Your code here
+enum HandShape {
+    case rock
+    case paper
+    case scissors
+}
+
+enum MatchResults {
+    case win
+    case draw
+    case lose
+}
 
 // Uncomment the lines below to test your solution
 
